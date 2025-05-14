@@ -1,20 +1,122 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nossa História</title>
-  <link href="style.css" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Larissa & Marco: A Série</title>
+  <style>
+    body {
+      background-color: #141414;
+      color: #fff;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+
+    header {
+      padding: 30px 20px;
+      font-size: 2em;
+      font-weight: bold;
+      color: #e50914;
+    }
+
+    #contadorConhecimento {
+      margin: 20px auto;
+      font-size: 1.2em;
+      color: #aaa;
+    }
+
+    .temporadas {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      padding: 30px 10px;
+    }
+
+    .caixa {
+      background-color: #222;
+      border-radius: 8px;
+      padding: 20px;
+      width: 200px;
+      height: 120px;
+      box-shadow: 0 0 10px rgba(255, 0, 0, 0.4);
+      transition: transform 0.3s;
+    }
+
+    .caixa:hover {
+      transform: scale(1.05);
+    }
+
+    #botaoNamoro {
+      margin: 40px auto;
+      padding: 15px 30px;
+      font-size: 1.2em;
+      background-color: #e50914;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    #resultadoNamoro {
+      margin-top: 20px;
+      font-size: 1.1em;
+      display: none;
+      color: #fff;
+    }
+  </style>
 </head>
 <body>
-  <div class="container">
-    <h1>💘 Marco & Larissa 💘</h1>
-    <p id="contador"></p>
+  <header>Larissa & Marco: A Série</header>
 
-    <button id="btn-namoro">Quer saber quanto tempo a gente namora mesmo? Clica aqui, curioso(a)!</button>
-    <div id="resultado-namoro"></div>
+  <div id="contadorConhecimento">Calculando há quanto tempo vocês se conhecem...</div>
+
+  <button id="botaoNamoro">Tá curioso quanto tempo a gente namora? Clica aqui</button>
+  <div id="resultadoNamoro">Você já sabe... 😉</div>
+
+  <div class="temporadas">
+    <div class="caixa">
+      <h3>Temporada 1</h3>
+      <p>Os primeiros olhares e o mistério do crush.</p>
+    </div>
+    <div class="caixa">
+      <h3>Temporada 2</h3>
+      <p>Namoro versão beta. Com bug e tudo.</p>
+    </div>
+    <div class="caixa">
+      <h3>Temporada 3</h3>
+      <p>Plot twist, drama e reconciliação.</p>
+    </div>
+    <div class="caixa">
+      <h3>Temporada 4</h3>
+      <p>Modo “Agora Vai!” ativado.</p>
+    </div>
   </div>
 
-  <script src="script.js"></script>
+  <script>
+    const dataConhecimento = new Date("2021-11-01T00:00:00");
+
+    function atualizarContador() {
+      const agora = new Date();
+      const diff = agora - dataConhecimento;
+
+      const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const horas = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutos = Math.floor((diff / (1000 * 60)) % 60);
+      const segundos = Math.floor((diff / 1000) % 60);
+
+      document.getElementById("contadorConhecimento").innerText =
+        `Vocês se conhecem há ${dias} dias, ${horas} horas, ${minutos} minutos e ${segundos} segundos.`;
+    }
+
+    setInterval(atualizarContador, 1000);
+
+    document.getElementById("botaoNamoro").addEventListener("click", () => {
+      document.getElementById("resultadoNamoro").style.display = "block";
+    });
+  </script>
 </body>
 </html>
