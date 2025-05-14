@@ -1,4 +1,4 @@
-const dataInicio = new Date("2022-08-20T00:00:00");
+const dataInicio = new Date("2021-11-20T00:00:00");
 
 const periodos = [
   { inicio: new Date("2023-12-01T00:00:00"), fim: new Date("2024-04-10T00:00:00") },
